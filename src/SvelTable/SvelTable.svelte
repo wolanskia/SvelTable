@@ -7,6 +7,9 @@
 	import { onMount } from 'svelte';
 	//props for user to specify
 	export let dataSet = [];
+	export let onRowClick = (e, rowHeight, index) => {};
+	export let onCellClick = (e, {}) => {};
+	
 	let currentData = [];
 	let searchedData = {};
 	//let filteredData = {};
@@ -174,7 +177,7 @@
 	</div>
 	<div class="DataContainer">
 		<VirtualList height={VLHeight + 'px'} items={$dataDisplay} let:item>
-			<CellRow rowData={item} />
+			<CellRow rowData={item} {onRowClick} {onCellClick} />
 		</VirtualList>
 	</div>
 </div>

@@ -2,6 +2,7 @@
 	export let displayText = '';
 	export let colID = 0;
 	export let rowID = 0;
+	export let onCellClick = (e, cell) => {};
 	import { columnWidth, columnMinWidth, overflowwrap } from './store';
 	let resizing = false;
 	let originalWidth = 0;
@@ -14,6 +15,7 @@
 	{rowID}
 	style="min-width: {$columnMinWidth + 'px'}; width: {$columnWidth[colID] +
 		'px'}; overflow-wrap: {$overflowwrap};"
+	on:click={(e) => onCellClick(e, { colID, rowID, displayText })}
 >
 	{displayText}
 	<div
